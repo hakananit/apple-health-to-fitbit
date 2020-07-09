@@ -72,6 +72,11 @@ for record in export_root.findall('Record'):
 	start_date = datetime.strptime(record.get('startDate'), '%Y-%m-%d %H:%M:%S %z')
 	date_string = start_date.strftime('%d-%m-%Y')
 	value = record.get('value')
+	sourceName = record.get('sourceName')
+	
+	# If value already comes from Garmin Connect no conversion is required
+	if (sourceName.find('Connect') != -1)
+		return
 
 	# Aggregate the data by calculating the sum for each date
 	if(record.get('type') == "HKQuantityTypeIdentifierStepCount"):
